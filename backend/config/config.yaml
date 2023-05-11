@@ -1,18 +1,43 @@
 database:
-  user: hanko
-  password: hanko
-  host: localhost
-  port: 5432
-  dialect: postgres
+  user: "kerry"
+  password: "yYB6H5i6Ix2JzouP"
+  host: "34.132.33.250"
+  port: "5432"
+  dialect: "postgres"
+webauthn:
+  relying_party:
+    id: "hi.reineed.com.au"
+    display_name: "Hi Reineed"
+    origins:
+      - "https://hi.reineed.com.au"
+server:
+  public:
+    cors:
+      allow_origins:
+        - "*"
+      unsafe_wildcard_origin_allowed: true
 passcode:
   email:
-    from_address: no-reply@hanko.io
+    from_address: "bus-pink0z@icloud.com"
+    from_name: "Reineed"
   smtp:
-    host: smtp.example.com
-    user: example
-    password: example
+    host: "smtp.sendgrid.net"
+    port: "587"
+    user: "apikey"
+    password: "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"
+password:
+  enabled: true
+  min_password_length: 8
+session:
+  enable_auth_token_header: true
+audit_log:
+  console_output:
+    enabled: true
+    output: "stdout"
+  storage:
+    enabled: false
 secrets:
   keys:
-    - abcedfghijklmnopqrstuvwxyz
+    - qqyjxauszxufutofiurgtbgidf
 service:
   name: Hanko Authentication Service

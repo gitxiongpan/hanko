@@ -1,7 +1,9 @@
 # Build the hanko binary
-FROM --platform=$BUILDPLATFORM golang:1.19 as builder
+FROM --platform=$BUILDPLATFORM golang:1.19-alpine as builder
+RUN apk update && apk add bash
 
-ARG TARGETARCH
+
+ARG TARGETARCH=amd64
 
 WORKDIR /workspace
 COPY go.mod go.mod
@@ -26,15 +28,12 @@ COPY thirdparty thirdparty/
 COPY build_info build_info/
 COPY middleware middleware/
 
+
 # Build
 RUN go generate ./...
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=$TARGETARCH go build -a -o hanko main.go
 
-# Use distroless as minimal base image to package hanko binary
-# See https://github.com/GoogleContainerTools/distroless for details
-FROM gcr.io/distroless/static:nonroot
-WORKDIR /
-COPY --from=builder /workspace/hanko .
-USER 65532:65532
+EXPOSE 8000 8001
 
-ENTRYPOINT ["/hanko"]
+
+ENTRYPOINT ["/workspace/hanko", "serve", "all"]
