@@ -10,6 +10,7 @@ webauthn:
     display_name: "Hi Reineed"
     origins:
       - "https://hi.reineed.com.au"
+      - "http://localhost"
 server:
   public:
     cors:
