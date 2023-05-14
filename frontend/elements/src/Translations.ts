@@ -2,8 +2,8 @@ export const translations = {
   en: {
     headlines: {
       error: "An error has occurred",
-      loginEmail: "Sign in or sign up",
-      loginFinished: "Login successful",
+      loginEmail: "登录或者注册",
+      loginFinished: "登录成功",
       loginPasscode: "Enter passcode",
       loginPassword: "Enter password",
       registerAuthenticator: "Save a passkey",
@@ -57,10 +57,8 @@ export const translations = {
     },
     labels: {
       or: "or",
-      yes: "yes",
-      no: "no",
       email: "Email",
-      continue: "Continue",
+      continue: "下一步",
       skip: "Skip",
       save: "Save",
       password: "Password",
@@ -176,8 +174,6 @@ export const translations = {
     },
     labels: {
       or: "oder",
-      yes: "ja",
-      no: "nein",
       email: "E-Mail",
       continue: "Weiter",
       skip: "Überspringen",

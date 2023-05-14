@@ -1,9 +1,11 @@
 # Build the hanko binary
-FROM --platform=$BUILDPLATFORM golang:1.19-alpine as builder
-RUN apk update && apk add bash
+FROM golang:1.19-alpine as builder
 
 
 ARG TARGETARCH=amd64
+
+RUN apk update && apk add bash
+
 
 WORKDIR /workspace
 COPY go.mod go.mod
@@ -36,4 +38,4 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=$TARGETARCH go build -a -o hanko main.go
 EXPOSE 8000 8001
 
 
-ENTRYPOINT ["/workspace/hanko", "serve", "all"]
+ENTRYPOINT ["/workspace/hanko", "serve", "public"]
